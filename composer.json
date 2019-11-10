@@ -1,0 +1,28 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ZabbixApi\\": "src/"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpstan/phpstan": "^0.11.19"
+    },
+    "scripts": {
+        "cs": [
+            "vendor/bin/php-cs-fixer fix -v --dry-run",
+            "vendor/bin/phpcs --standard=phpcs.xml src"
+        ],
+        "cs-fix": [
+            "vendor/bin/php-cs-fixer fix -v",
+            "vendor/bin/phpcbf src"
+        ],
+        "lint": [
+            "vendor/bin/phpstan analyse --level=max src"
+        ]
+    }
+}
