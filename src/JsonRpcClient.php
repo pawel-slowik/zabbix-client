@@ -47,7 +47,9 @@ class JsonRpcClient
                 "password" => $password,
             ]
         );
-        $this->token = $response;
+        if (is_string($response)) {
+            $this->token = $response;
+        }
     }
 
     public function logout(): void
