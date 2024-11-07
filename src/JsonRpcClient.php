@@ -70,7 +70,8 @@ class JsonRpcClient
 
     protected function send(array $request)
     {
-        $response = $this->httpClient->post(
+        $response = $this->httpClient->request(
+            "post",
             $this->url,
             [
                 "headers" => [
