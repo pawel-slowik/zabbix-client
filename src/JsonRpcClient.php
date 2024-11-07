@@ -102,14 +102,19 @@ class JsonRpcClient
         return $decoded["result"];
     }
 
-    protected function jsonRpcErrorMessage(array $error): string
+    protected function jsonRpcErrorMessage(mixed $error): string
     {
         $message = "JSON-RPC error";
-        foreach (["code", "message", "data"] as $key) {
-            if (array_key_exists($key, $error)) {
-                $value = is_scalar($error[$key]) ? $error[$key] : var_export($error[$key], true);
-                $message .= ", {$key}: {$value}";
+        if (is_array($error)) {
+            foreach (["code", "message", "data"] as $key) {
+                if (array_key_exists($key, $error)) {
+                    $value = is_scalar($error[$key]) ? $error[$key] : var_export($error[$key], true);
+                    $message .= ", {$key}: {$value}";
+                }
             }
+        } else {
+            $value = is_scalar($error) ? $error : var_export($error, true);
+            $message .= ", {$value}";
         }
         return $message;
     }
