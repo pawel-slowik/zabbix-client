@@ -8,15 +8,15 @@ use GuzzleHttp\ClientInterface as HttpClientInterface;
 
 class JsonRpcClient
 {
-    protected $httpClient;
+    protected HttpClientInterface $httpClient;
 
-    protected $url;
+    protected string $url;
 
-    protected $codec;
+    protected JsonRpcRequestCodec $codec;
 
-    protected $requestId;
+    protected int $requestId;
 
-    protected $token;
+    protected ?string $token;
 
     public function __construct(
         HttpClientInterface $httpClient,
