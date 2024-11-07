@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="PHP_CodeSniffer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <!-- s = show sniff codes -->
+    <arg value="s"/>
+
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
     <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
@@ -11,5 +15,6 @@
         <exclude name="PEAR.Commenting.FunctionComment.SpacingBeforeTags"/>
         <exclude name="PEAR.Commenting.FunctionComment.MissingParamTag"/>
         <exclude name="PEAR.Commenting.FunctionComment.Missing"/>
+        <exclude name="PEAR.Commenting.FunctionComment.ParamNameNoMatch"/>
     </rule>
 </ruleset>

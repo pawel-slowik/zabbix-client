@@ -29,7 +29,10 @@ class JsonRpcClient
         $this->requestId = 0;
     }
 
-    public function request(string $methodName, ?array $parameters = null)
+    /**
+     * @param array<string, mixed> $parameters
+     */
+    public function request(string $methodName, ?array $parameters = null): mixed
     {
         $request = $this->buildRequest($methodName, $parameters, ++$this->requestId);
         return $this->send($request);
@@ -53,6 +56,11 @@ class JsonRpcClient
         $this->token = null;
     }
 
+    /**
+     * @param array<string, mixed> $parameters
+     *
+     * @return array<string, mixed>
+     */
     protected function buildRequest(string $methodName, ?array $parameters, int $requestId): array
     {
         $request = [
@@ -68,7 +76,10 @@ class JsonRpcClient
         return $request;
     }
 
-    protected function send(array $request)
+    /**
+     * @param array<string, mixed> $request
+     */
+    protected function send(array $request): mixed
     {
         $response = $this->httpClient->request(
             "post",

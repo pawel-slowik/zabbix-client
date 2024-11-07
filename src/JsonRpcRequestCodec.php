@@ -6,6 +6,9 @@ namespace ZabbixApi;
 
 class JsonRpcRequestCodec
 {
+    /**
+     * @param array<string, mixed> $request
+     */
     public function encode(array $request): string
     {
         $body = json_encode($request, JSON_PRETTY_PRINT);
@@ -15,6 +18,9 @@ class JsonRpcRequestCodec
         return $body;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function decode(string $body): array
     {
         $decoded = json_decode($body, true);
